@@ -46,16 +46,16 @@ I tried various combinations of parameters while training my classification mode
 
 I trained a non linear SVM using HOG, color bin and color histogram features in 10th code cell of the IPython notebook. My final model was a non Linear SVM trained on HLS images, the used parameters are as the following: 
 
-`color_space = 'HLS' # Can be RGB, HSV, LUV, HLS, YUV, YCrCb
-spatial_size = (32, 32) # Spatial binning dimensions
-hist_bins = 32    # Number of histogram bins
-orient = 9  # HOG orientations
-pix_per_cell = 8 # HOG pixels per cell
-cell_per_block = 2 # HOG cells per block
-hog_channel = "ALL" # Can be 0, 1, 2, or "ALL"
-spatial_feat = True # Spatial features on or off
-hist_feat = True # Histogram features on or off
-hog_feat = True # HOG features on or off`
+* color_space = 'HLS' # Can be RGB, HSV, LUV, HLS, YUV, YCrCb
+* spatial_size = (32, 32) # Spatial binning dimensions
+* hist_bins = 32    # Number of histogram bins
+* orient = 9  # HOG orientations
+* pix_per_cell = 8 # HOG pixels per cell
+* cell_per_block = 2 # HOG cells per block
+* hog_channel = "ALL" # Can be 0, 1, 2, or "ALL"
+* spatial_feat = True # Spatial features on or off
+* hist_feat = True # Histogram features on or off
+* hog_feat = True # HOG features on or off
 
 This resulted test Accuracy of SVC =  99.72% I trained on the GTI and extra data and tested on the other directories to avoid the risk of overfitting that came with having similar images in the same directory.
 
@@ -64,17 +64,13 @@ This resulted test Accuracy of SVC =  99.72% I trained on the GTI and extra data
 #### 1. Describe how (and identify where in your code) you implemented a sliding window search.  How did you decide what scales to search and how much to overlap windows?
 
 I implemented a multi size sliding window search in multi_size_slide_window() in the 12th code cell of the IPython notebook with overlap 75%. I searched on windows of scales 95x95 to 140x140 with step 10px over the whole road area `y_start_stop = [350, 700]`, because these searches produce good results. Then I filtered false positives by implementing a threshold on the heatmap in the 14th code cell of the IPython notebook.
-Here is an example of a multi-size sliding window and heatmap of detections made on a test image:
-
 ![alt text][image3]
 
-#### 2. Show some examples of test images to demonstrate how your pipeline is working.  What did you do to optimize the performance of your classifier?
-
-I implemented the complete pipeline in process_image() in the 17th code cell of the IPython notebook.
-Here are some example images:
+Here is an example of a multi-size sliding window and heatmap of detections made on a test image:
 ![alt text][image4]
 
----
+#### 2. Show some examples of test images to demonstrate how your pipeline is working.  What did you do to optimize the performance of your classifier?
+I implemented the complete pipeline in process_image() in the 17th code cell of the IPython notebook.
 
 ### Video Implementation
 
